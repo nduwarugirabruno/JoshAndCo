@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>Registering a new teacher</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ng-container>
+		<ion-card class="my-5 px-3 mx-4 py-2">
+			<ion-card-header>
+				<ion-card-title>
+					<div class="text-center mb-1">
+						<h4 class="mt-1" style="font-size: large; font-weight: bolder;">
+							Enregistrer un nouvel enseignant
+						</h4>
+						<h4 class="fst-italic" style="font-size: small;">
+							<img alt="logo" src="/assets/images/logo.png" style="width: 100px;">
+							Josh and Collaborators
+						</h4>
+					</div>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+
+				<!-- Formulaire -->
+				<form (ngSubmit)="submit()" [formGroup]="form">
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="names">Full names</label>
+						<input class="form-control form-control-sm" formControlName="names"
+								id="names"
+								name="names"
+								placeholder="Teacher's first and last names"
+								type="text"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="age">Age</label>
+						<input class="custom-number-input form-control form-control-sm"
+								formControlName="age" id="age"
+								name="age"
+								placeholder="Age" type="number"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="tel">Phone</label>
+						<input class="form-control form-control-sm" formControlName="tel" id="tel"
+								name="tel"
+								placeholder="Phone" type="tel"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="domicile">Address</label>
+						<input class="form-control form-control-sm" formControlName="domicile"
+								id="domicile"
+								name="domicile"
+								placeholder="Address" type="text"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="niveau">Academic level</label>
+						<input class="form-control form-control-sm" formControlName="niveau"
+								id="niveau"
+								name="niveau"
+								placeholder="Academic level" type="text"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="matiere">Subjects</label>
+						<input class="form-control form-control-sm" formControlName="matiere"
+								id="matiere"
+								name="matiere"
+								placeholder="Subjects... NB: Separated by commas."
+								type="text"/>
+					</div>
+
+					<!-- <app-loading-popup *ngIf="isLoading"
+										[message]="'Ajout en cours...'"></app-loading-popup> -->
+
+					<div class="d-flex justify-content-end mb-2 mb-lg-3">
+						<button [disabled]="form.invalid"
+								class="btn btn-primary btn-block gradient-custom-2 border border-color-none"
+								type="submit">Save
+						</button>
+					</div>
+
+				</form>
+			</ion-card-content>
+		</ion-card>
+    </ng-container>
+
+</ion-content>

@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>Teacher's details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ng-container>
+		<ion-card class="my-3 px-3 mx-4 py-2">
+			<ion-card-header>
+				<ion-card-title>
+					<ion-item>
+						<ion-avatar slot="start">
+							<img alt="avatar" class="rounded-circle img-fluid" src="assets/ava3.webp" style="width: 150px;">
+						</ion-avatar>
+						<ion-label>
+							<h5 class="mt-1" style="font-weight: bold; font-size: smaller;">{{ enseignant?.names }}</h5>
+							<p class="text-muted2 mb-1" style="font-weight: lighter;">{{ enseignant?.tel }}</p>
+							<p class="text-muted2 mb-1" style="font-weight: lighter;">{{ total }} FCFA</p>
+						</ion-label>
+					</ion-item>
+					<div class="text-center">
+						<!-- <img src=" {{ (enseignant)?.photo }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> -->
+						<div class="d-flex justify-content-end mt-3">
+							<button (click)="back()" class="btn btn-primary" type="button">Retour
+							</button>
+						</div>
+					</div>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="12">
+						<p class="mb-0">Full Names</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ enseignant?.names }}</p></ion-col>
+					<ion-col size="12">
+						<p class="mb-0">Age</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ enseignant?.age }} years old</p></ion-col>
+					<ion-col size="12">
+						<p class="mb-0">Phone number</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0"> (+237) {{ enseignant?.tel }}</p></ion-col>
+					<ion-col size="12">
+						<p class="mb-0">Address</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ enseignant?.domicile }}</p></ion-col>
+					<ion-col size="12">
+						<p class="mb-0">Academic level</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ enseignant?.niveau }}</p></ion-col>
+					<ion-col size="12">
+						<p class="mb-0">Subjects</p>
+						<div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px">
+						</div>
+					</ion-col>
+					<!-- <ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ matiere }}</p></ion-col> -->
+					<ion-col size="12" class="text-end"><p class="text-muted2 mb-0">{{ enseignant?.matiere?.join(', ') }}</p></ion-col>
+				</ion-row>
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card class="my-3 px-3 mx-4 py-2" *ngIf="lenght > 0">
+			<ion-card-header>
+				<ion-card-title>
+					<div class="separator">
+
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-10">
+								<h4 class="sub-title" style="font-weight: bold; font-size: small;"> Liste des contrats de {{ enseignant?.names }}
+								</h4>
+							</div>
+						</div>
+						<div class="mx-auto"
+								style="height: 7px; background-color: black; border-radius: 5px"></div>
+
+					</div>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-row>
+					<ion-col size="12" *ngFor="let contract of listContrats" style="cursor: pointer;">
+						<ion-item (click)="seaContract(contract.id)">
+							<ion-avatar slot="start">
+								<img alt="avatar" class="rounded-circle img-fluid" [src]="['assets/contracter.png']" style="width: 150px;">
+							</ion-avatar>
+							<ion-label>
+								<h5 class="mt-1" style="font-weight: bold; font-size: smaller;">{{ contract.maison.noms }}</h5>
+								<p class="text-muted2 mb-1" style="font-weight: lighter;">{{ contract.matiere.join(', ') }}</p>
+								<p class="text-muted2 mb-1" style="font-weight: lighter;">{{ contract.montant }} FCFA</p>
+							</ion-label>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+    </ng-container>
+
+</ion-content>

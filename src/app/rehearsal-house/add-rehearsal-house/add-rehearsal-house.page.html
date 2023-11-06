@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-title>Registering a new Rehearsal House</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ng-container>
+		<ion-card class="my-5 px-3 mx-4 py-2">
+			<ion-card-header>
+				<ion-card-title>
+					<div class="text-center mb-1">
+						<h4 class="mt-1" style="font-size: large; font-weight: bolder;">
+							Enregistrer une nouvelle maison de cours
+						</h4>
+						<h4 class="fst-italic" style="font-size: small;">
+							<img alt="logo" src="/assets/images/logo.png" style="width: 100px;">
+							Josh and Collaborators
+						</h4>
+					</div>
+				</ion-card-title>
+			</ion-card-header>
+			<ion-card-content>
+				<!-- Formulaire -->
+				<form (ngSubmit)="submit()" [formGroup]="form">
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="noms">Parent's names</label>
+						<input class="form-control form-control-sm" formControlName="noms" id="noms"
+								name="noms"
+								placeholder="Parent's full name"
+								type="text"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="tel">Phone number</label>
+						<input class="form-control form-control-sm" formControlName="tel" id="tel"
+								name="tel"
+								placeholder="Phone number" type="tel"/>
+					</div>
+
+					<div class="form-outline mb-3 small">
+						<label class="form-label small" for="quartier">Adresse</label>
+						<input class="form-control form-control-sm" formControlName="quartier"
+								id="quartier"
+								name="quartier"
+								placeholder="Address" type="text"/>
+					</div>
+
+					<div class="d-flex justify-content-end mb-2 mb-lg-3">
+						<button [disabled]="form.invalid"
+								class="btn btn-primary btn-block gradient-custom-2 border border-color-none"
+								type="submit">Save
+						</button>
+					</div>
+
+				</form>
+			</ion-card-content>
+		</ion-card>
+    </ng-container>
+
+</ion-content>

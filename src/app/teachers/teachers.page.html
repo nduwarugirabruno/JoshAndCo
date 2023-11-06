@@ -1,0 +1,89 @@
+
+<ion-header [translucent]="true">
+    <ion-toolbar>
+		<ion-title>
+			Teacher
+		</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ng-container>
+		<ion-row style="width: 100%; border-radius: 20px;">
+			<ion-col size="12">
+				<ion-card>
+					<ion-card-header>
+					</ion-card-header>
+					<ion-card-content>
+						<h4 class="sub-title d-flex justify-content-start" style="font-weight: bold; font-size: small">
+							Ajouter un nouvel enseignant
+							<hr class="mb-2">
+						</h4>
+						<div class="d-flex justify-content-end mb-lg-3">
+							<ion-button (click)="addTeacher()" expand="block" fill="solid" shape="square">
+								Ajouter un enseignant
+							</ion-button>
+						</div>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+
+		<div class="separator mx-auto" style="width: 90%;">
+
+			<div class="row mt-5">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-10">
+					<h4 class="sub-title" style="font-weight: bold;"> Liste des Enseignants
+					</h4>
+				</div>
+			</div>
+			<div class="mb-2 col-sm-10 mx-auto"
+					style="height: 10px; background-color: black; border-radius: 5px"></div>
+			<br>
+			<div class="row d-flex justify-content-end mb-5">
+				<div class="col-md-6 form-group d-flex">
+					<h5 class="search mx-3 mt-2" style="font-weight: bolder"> Rechercher </h5>
+					<input (ngModelChange)="searchedTeacher = $event" [ngModel]="searchedTeacher"
+							class="form-control form-control-sm"
+							style="border: solid black; border-radius: 10px;" type="text">
+				</div>
+			</div>
+			<br>
+
+		</div>
+
+		<ion-row>
+			<ion-col size="6" *ngFor="let enseignant of searchedEnseignant">
+				<ion-card style="border-radius: 20px">
+					<ion-card-header>
+						<img
+							[alt]="enseignant.id"
+							(click)="detail(enseignant.id)" [src]="['assets/ava3.webp']"
+							[title]="enseignant.id "
+							class="card-img-top rounded-circle h-75 w-75 mx-auto my-3"
+							style="cursor: pointer;"
+						/>
+					</ion-card-header>
+					<ion-card-content>
+						<h5 class="card-title"
+							style="font-weight: bolder;">{{ enseignant.names }}</h5>
+						<p class="card-text" style="font-weight: lighter;">
+							{{ enseignant.tel }}
+						</p>
+						<p class="card-text" style="font-weight: lighter;">
+							{{ enseignant.domicile }}
+						</p>
+						<div class="modif d-flex justify-content-end mb-sm-3 mx-sm-3">
+							<button (click)="detail(enseignant.id)"
+									class="btn btn-primary btn-block mt-2"
+									id="look" style="border-radius: 15px">En savoir
+								plus <i class="fas fa-long-arrow-alt-right"></i></button>
+						</div>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+    </ng-container>
+
+</ion-content>
